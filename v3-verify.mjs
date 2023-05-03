@@ -7,9 +7,13 @@ const networks = {
   bscMainnet: 'bscMainnet',
   bscTestnet: 'bscTestnet',
   hardhat: 'hardhat',
+  pilotMainnet: 'pilotMainnet',
+  pilotTestnet: 'pilotTestnet',
 }
 
 let network = process.env.NETWORK
+network='pilotTestnet'
+
 console.log(network, 'network')
 if (!network || !networks[network]) {
   throw new Error(`env NETWORK: ${network}`)
