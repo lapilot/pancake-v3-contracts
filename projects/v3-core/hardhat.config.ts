@@ -1,6 +1,7 @@
 import type { HardhatUserConfig, NetworkUserConfig } from 'hardhat/types'
 import '@nomiclabs/hardhat-ethers'
-import '@nomiclabs/hardhat-etherscan'
+//import '@nomiclabs/hardhat-etherscan'
+import '@nomicfoundation/hardhat-verify'
 import '@nomiclabs/hardhat-waffle'
 import '@typechain/hardhat'
 import 'hardhat-watcher'
@@ -85,7 +86,8 @@ const pilotTestnet: NetworkUserConfig = {
   accounts: [process.env.KEY_PILOT_TESTNET!],
 }
 
-export default {
+const config = {
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
@@ -99,7 +101,7 @@ export default {
     // mainnet: bscMainnet,
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.ETHERSCAN_API_KEY || '',
     customChains: [
       {
         network: "pilotMainnet",
@@ -138,3 +140,5 @@ export default {
     pages: 'files',
   },
 }
+
+export default config
